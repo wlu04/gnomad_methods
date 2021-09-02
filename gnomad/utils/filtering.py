@@ -130,6 +130,12 @@ def filter_low_conf_regions(
     :param high_conf_regions: Paths to set of high confidence regions to restrict to (union of regions)
     :return: MatrixTable or Table with low confidence regions removed
     """
+    from gnomad.resources.config import (
+        gnomad_public_resource_configuration,
+        GnomadPublicResourceSource,
+    )
+
+    gnomad_public_resource_configuration.source = GnomadPublicResourceSource.GNOMAD
     build = get_reference_genome(mt.locus).name
     if build == "GRCh37":
         import gnomad.resources.grch37.reference_data as resources
