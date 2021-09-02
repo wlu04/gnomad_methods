@@ -227,7 +227,7 @@ def vep_or_lookup_vep(
     revep_ht = ht.filter(hl.is_missing(ht.vep))
     revep_ht = hl.vep(revep_ht, vep_config_path)
 
-    return vep_ht.union(revep_ht)
+    return vep_ht.union(revep_ht, unify=True)
 
 
 def add_most_severe_consequence_to_consequence(
